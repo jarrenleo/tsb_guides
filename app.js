@@ -57,7 +57,7 @@ class Discord {
       if (!m.content.startsWith("!guide")) return;
       if (!this.checkUserId(m.author.id)) return;
 
-      const [skus, countries] = this.getParams(m.content.trimStart().slice(6));
+      const [skus, countries] = this.getParams(m.content.slice(6).trimStart());
       await this.guide.handleMessage(m, skus, countries);
     });
   }

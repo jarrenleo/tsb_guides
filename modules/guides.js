@@ -82,8 +82,8 @@ export class Guide extends GuideData {
       if (!skus.length) throw Error("Missing SKU parameter");
       if (!countries.length) throw Error("Missing country parameter");
 
-      for (const sku of skus) {
-        for (const country of countries) {
+      for (const country of countries) {
+        for (const sku of skus) {
           await this.sendEmbed(m, sku, country);
         }
       }

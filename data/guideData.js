@@ -71,10 +71,7 @@ export class GuideData {
       );
     }
 
-    const t = productInput.join("\n\n");
-    productInput = [];
-
-    return t;
+    return productInput.join("\n\n");
   }
 
   getSizeInput(productType) {

@@ -45,7 +45,7 @@ export const jpEmbed = (data) => {
         {
           name: "Notes",
           value:
-            "- TASKを編集しないでください。起動ごとに常に新しいTASKを作成してください\n- FILLER TASKは 1 回実行する必要があります - いつでも実行できます\n- ACCOUNTを確認し、リリースの 3 ～ 5 時間前までに GUCCI を得てください。\n- [PROFILE] タブで住所をチェックして、J1Gされた 住所が表示されていることを確認します\n- ACCOUNTに設定されたSIZE選択をお勧めします\n- LEOではre-entryをon\n- リリースの30分前にTASKを開始\n- 細かいセットアップ手順 https://ptb.discord.com/channels/555044271925887016/841944947426590770/999302390685642822/\n\nCheckout Failures\n- 新しいPROXYを設定します (禁止されたPROXYはチェックアウトでブロックされます)\n-  J1Gのやり直し/新しい CC\n- 新しいPROFILEをBIND\n- FILLER TASK の再実行",
+            "- TASKを編集しないでください。起動ごとに常に新しいTASKを作成してください\n- FILLER TASKは 1 回実行する必要があります - いつでも実行できます\n- ACCOUNTを確認し、リリースの 3 ～ 5 時間前までに GUCCI を得てください。\n- [PROFILE] タブで住所をチェックして、J1Gされた 住所が表示されていることを確認します\n- ACCOUNTに設定されたSIZE選択をお勧めします\n- リリースの30分前にTASKを開始\n- LEOではre-entryをon\n- 細かいセットアップ手順 https://ptb.discord.com/channels/555044271925887016/841944947426590770/999302390685642822/\n\nCheckout Failures\n- 新しいPROXYを設定します (禁止されたPROXYはチェックアウトでブロックされます)\n-  J1Gのやり直し/新しい CC\n- 新しいPROFILEをBIND\n- FILLER TASK の再実行",
         },
       ],
       footer: {

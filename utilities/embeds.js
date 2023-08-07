@@ -1,18 +1,16 @@
-export const jpEmbed = (data) => {
-  const [
-    channel,
-    _,
-    name,
-    url,
-    image,
-    launchDateAndTime,
-    method,
-    price,
-    productInput,
-    sizeInput,
-    author,
-  ] = data;
-
+export const jpEmbed = ([
+  channel,
+  _,
+  name,
+  url,
+  image,
+  launchDateAndTime,
+  method,
+  price,
+  productInput,
+  sizeInput,
+  author,
+]) => {
   return [
     {
       color: 11036160,
@@ -57,21 +55,19 @@ export const jpEmbed = (data) => {
   ];
 };
 
-export const euEmbed = (data) => {
-  const [
-    channel,
-    _,
-    name,
-    url,
-    image,
-    launchDateAndTime,
-    method,
-    price,
-    productInput,
-    sizeInput,
-    author,
-  ] = data;
-
+export const euEmbed = ([
+  channel,
+  _,
+  name,
+  url,
+  image,
+  launchDateAndTime,
+  method,
+  price,
+  productInput,
+  sizeInput,
+  author,
+]) => {
   return [
     {
       color: 11036160,
@@ -93,21 +89,19 @@ export const euEmbed = (data) => {
   ];
 };
 
-export const usEmbed = (data) => {
-  const [
-    channel,
-    _,
-    name,
-    url,
-    image,
-    launchDateAndTime,
-    method,
-    price,
-    productInput,
-    sizeInput,
-    author,
-  ] = data;
-
+export const usEmbed = ([
+  channel,
+  _,
+  name,
+  url,
+  image,
+  launchDateAndTime,
+  method,
+  price,
+  productInput,
+  sizeInput,
+  author,
+]) => {
   return [
     {
       color: 11036160,
@@ -152,21 +146,19 @@ export const usEmbed = (data) => {
   ];
 };
 
-export const gsEmbed = (data) => {
-  const [
-    channel,
-    country,
-    name,
-    url,
-    image,
-    launchDateAndTime,
-    method,
-    price,
-    productInput,
-    sizeInput,
-    author,
-  ] = data;
-
+export const gsEmbed = ([
+  channel,
+  country,
+  name,
+  url,
+  image,
+  launchDateAndTime,
+  method,
+  price,
+  productInput,
+  sizeInput,
+  author,
+]) => {
   return [
     {
       color: 11036160,

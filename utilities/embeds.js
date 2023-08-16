@@ -19,7 +19,7 @@ export const jpEmbed = ([
       },
       title: name,
       url: url,
-      description: `<t:${launchDateAndTime}:F> | <t:${launchDateAndTime}:R>\nLaunch Method: ${method}\nRetail Price: ${price}`,
+      description: `<t:${launchDateAndTime}:F> | <t:${launchDateAndTime}:R>\nMethod: ${method}\nRetail Price: ${price}`,
       thumbnail: {
         url: image,
       },
@@ -76,7 +76,7 @@ export const euEmbed = ([
       },
       title: name,
       url: url,
-      description: `<t:${launchDateAndTime}:F> | <t:${launchDateAndTime}:R>\n\n**Launch Method**\n> ${method}\n\n**Channel**\n> ${channel}\n\n**Retail Price**\n> ${price}\n\n**Mode**\n> Request Mode\n\n**Input**\n> ${productInput}\n\n**Size Input**\n> Random - RA\n> Specific - ${sizeInput}\n\n**Notes**\n> Don't use pre-submit in the EU at the moment\n> Proxy set can be found under the accounts tab\n> Do not edit tasks, always create new tasks for every launch\n> Check your Accounts prior to a drop [dont do it too late, though]`,
+      description: `<t:${launchDateAndTime}:F> | <t:${launchDateAndTime}:R>\n\n**Method**\n> ${method}\n\n**Channel**\n> ${channel}\n\n**Retail Price**\n> ${price}\n\n**Mode**\n> Request Mode\n\n**Input**\n> ${productInput}\n\n**Size Input**\n> Random - RA\n> Specific - ${sizeInput}\n\n**Notes**\n> Do not use pre-submit in the EU\n> Recommend re-entry for LEO releases\n> Proxy set can be found under the accounts tab\n> Do not edit tasks, always create new tasks for every launch\n> Check your Accounts prior to a drop [dont do it too late, though]`,
       image: {
         url: image,
       },
@@ -110,7 +110,7 @@ export const usEmbed = ([
       },
       title: name,
       url: url,
-      description: `<t:${launchDateAndTime}:F> | <t:${launchDateAndTime}:R>\nLaunch Method: ${method}\nRetail Price: ${price}`,
+      description: `<t:${launchDateAndTime}:F> | <t:${launchDateAndTime}:R>\nMethod: ${method}\nRetail Price: ${price}`,
       thumbnail: {
         url: image,
       },
@@ -134,7 +134,7 @@ export const usEmbed = ([
         {
           name: "Notes",
           value:
-            "- Do not edit tasks, always create new tasks for every launch\n- Filler tasks should be done ONCE (Can be done whenever)\n- Accounts at Gucci @ 50 minutes before drop time\n- Check address in Profile tab to make sure they show your j1gged address\n- Recommend for account sizes to be used\n- Start tasks @ 20 minutes before drop time (NOT MORE)\n- Make sure that you have set up your IMAP before you check your accounts and begin running for releases. If you already have valid sessions, there is no need to add them again.\n\n**Checkout Failures**\n- Set new proxies (Banned proxies are blocked from checking out)\n- Change address j1gs (Verified address)\n- Use same phone number / first name / last name / email as account and unique 1:1 relationships\n- Bind new profiles\n- Run filler tasks again (Okay to run before release without restrictions)\n\nP.S: ACCOUNTS PLAY A HUGE ROLE IN DECLINES AS WELL / MOSTLY ADDRESS",
+            "- Do not edit tasks, always create new tasks for every launch\n- Filler tasks should be done ONCE (Can be done whenever)\n- Accounts at Gucci @ 50 minutes before drop time\n- Check address in Profile tab to make sure they show your j1gged address\n- Recommend for account sizes to be used\n- Recommend re-entry for LEO releases\n- Start tasks @ 20 minutes before drop time (NOT MORE)\n- Make sure that you have set up your IMAP before you check your accounts and begin running for releases. If you already have valid sessions, there is no need to add them again.\n\n**Checkout Failures**\n- Set new proxies (Banned proxies are blocked from checking out)\n- Change address j1gs (Verified address)\n- Use same phone number / first name / last name / email as account and unique 1:1 relationships\n- Bind new profiles\n- Run filler tasks again (Okay to run before release without restrictions)\n\nP.S: ACCOUNTS PLAY A HUGE ROLE IN DECLINES AS WELL / MOSTLY ADDRESS",
         },
       ],
       footer: {
@@ -167,7 +167,7 @@ export const gsEmbed = ([
       },
       title: name,
       url: url,
-      description: `<t:${launchDateAndTime}:F> | <t:${launchDateAndTime}:R>\nLaunch Method: ${method}\nRetail Price: ${price}`,
+      description: `<t:${launchDateAndTime}:F> | <t:${launchDateAndTime}:R>\nMethod: ${method}\nRetail Price: ${price}`,
       thumbnail: {
         url: image,
       },
@@ -191,7 +191,7 @@ export const gsEmbed = ([
         {
           name: "Notes",
           value:
-            "- Ensure that account are checked and bound prior to launch\n- Start tasks in batches 30 - 35 minutes prior to launch\n- Filler Mode and Re-Entry is recommended\n- Pre-Submit or Account Sizes are optional",
+            "- Ensure that account are checked and bound prior to launch\n- Start tasks in batches 30 - 35 minutes prior to launch\n- Recommend re-entry for LEO releases\n- Pre-Submit or Account Sizes are optional",
         },
       ],
       footer: {

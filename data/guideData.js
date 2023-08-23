@@ -88,7 +88,7 @@ export class GuideData {
         getNikeGuideData("Nike.com", sku, country, language),
       ]);
 
-      const data = nikecomData ?? snkrsData;
+      const data = snkrsData ?? nikecomData;
       if (!data) throw Error(`Product **${sku}** not found in **${country}**`);
 
       const productInfo = this.getProductInfo(data.productInfo, sku);

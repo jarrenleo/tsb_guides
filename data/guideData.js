@@ -1,19 +1,18 @@
-import { getNikeGuideData } from "./nikeAPI.js";
 import { getLanguage } from "../utilities/helpers.js";
+import { getNikeGuideData } from "./nikeAPI.js";
 
 export class GuideData {
-  getProductInfo(product, sku) {
-    return product.length === 1
-      ? product[0]
-      : product.find((product) => product.merchProduct.styleColor === sku);
-  }
+  async getProductData(sku, country) {
+    try {
+      const language = getLanguage(country);
+      if (!language) throw Error(`Country **${country}** is not supported`);
 
-  getChannelName(channel) {
-    switch (channel) {
-      case "SNKRS Web":
-        return "SNKRS";
-      case "Nike.com":
-        return "NIKE";
+      const data = await getNikeGuideData(sku, country, language);
+      if (!data) throw Error(`Product **${sku}** not found in **${country}**`);
+
+      return data;
+    } catch (e) {
+      throw Error(e.message);
     }
   }
 
@@ -21,18 +20,20 @@ export class GuideData {
     const countryPath = country !== "US" ? `/${country.toLowerCase()}` : "";
 
     switch (channel) {
-      case "SNKRS Web":
+      case "SNKRS Web" || "SNKRS":
         return `https://www.nike.com${countryPath}/launch/t/${slug}`;
       case "Nike.com":
         return `https://www.nike.com${countryPath}/t/${slug}/${sku}`;
     }
   }
 
-  getImage(sku) {
-    return `https://secure-images.nike.com/is/image/DotCom/${sku.replace(
-      "-",
-      "_"
-    )}`;
+  getChannel(channel) {
+    switch (channel) {
+      case "SNKRS Web" || "SNKRS":
+        return "SNKRS";
+      case "Nike.com":
+        return "NIKE";
+    }
   }
 
   getMethod(product) {
@@ -60,71 +61,51 @@ export class GuideData {
     return `${price.currency} ${price.fullPrice.toLocaleString("en-US")}`;
   }
 
-  getProductInput(products) {
-    let productInput = [];
-
-    for (const product of products) {
-      productInput.push(
-        `${product.productContent.subtitle}\n${"`"}${
-          product.merchProduct.styleColor
-        }${"`"}`
-      );
-    }
-
-    return productInput.join("\n\n");
+  getImage(sku) {
+    return `https://secure-images.nike.com/is/image/DotCom/${sku.replace(
+      "-",
+      "_"
+    )}`;
   }
 
-  getSizeInput(productType) {
-    return productType === "FOOTWEAR" ? "7,7.5,8" : "S,M,L";
-  }
-
-  async getGuideData(m, sku, country) {
+  async getGuideData(sku, country) {
     try {
-      const language = getLanguage(country);
-      if (!language) throw Error(`Country **${country}** is not supported`);
+      const guideData = [];
+      const productData = await this.getProductData(sku, country);
 
-      const [snkrsData, nikecomData] = await Promise.all([
-        getNikeGuideData("SNKRS%20Web", sku, country, language),
-        getNikeGuideData("Nike.com", sku, country, language),
-      ]);
+      for (const productInfo of productData.productInfo) {
+        const name = productInfo.productContent.fullTitle;
+        const url = this.getURL(
+          productData.channelName,
+          sku,
+          country,
+          productInfo.productContent.slug
+        );
+        const releaseDateAndTime =
+          Date.parse(
+            productInfo.launchView?.startEntryDate ??
+              productInfo.merchProduct.commerceStartDate
+          ) / 1000;
+        const channel = this.getChannel(productData.channelName);
+        const method = this.getMethod(productInfo);
+        const price = this.getPrice(productInfo.merchPrice);
+        const productSKU = productInfo.merchProduct.styleColor;
+        const image = this.getImage(productSKU);
 
-      const data = snkrsData ?? nikecomData;
-      if (!data) throw Error(`Product **${sku}** not found in **${country}**`);
+        guideData.push([
+          name,
+          url,
+          releaseDateAndTime,
+          channel,
+          method,
+          price,
+          productSKU,
+          country,
+          image,
+        ]);
+      }
 
-      const productInfo = this.getProductInfo(data.productInfo, sku);
-      const channel = this.getChannelName(data.channelName);
-      const name = productInfo.productContent.title;
-      const url = this.getURL(
-        data.channelName,
-        sku,
-        country,
-        productInfo.productContent.slug
-      );
-      const image = this.getImage(sku);
-      const launchDateAndTime =
-        Date.parse(
-          productInfo.launchView?.startEntryDate ??
-            productInfo.merchProduct.commerceStartDate
-        ) / 1000;
-      const method = this.getMethod(productInfo);
-      const price = this.getPrice(productInfo.merchPrice);
-      const productInput = this.getProductInput(data.productInfo);
-      const sizeInput = this.getSizeInput(productInfo.merchProduct.productType);
-      const author = m.author.username;
-
-      return [
-        channel,
-        country,
-        name,
-        url,
-        image,
-        launchDateAndTime,
-        method,
-        price,
-        productInput,
-        sizeInput,
-        author,
-      ];
+      return guideData;
     } catch (e) {
       throw Error(e.message);
     }

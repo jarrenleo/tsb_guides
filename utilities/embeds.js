@@ -9,7 +9,7 @@ export const guideEmbed = (
       color: 11036160,
       fields: [
         {
-          name: "Release Date",
+          name: "Release Date & Time",
           value: `<t:${releaseDateAndTime}:F> | <t:${releaseDateAndTime}:R>`,
         },
         {
@@ -38,7 +38,7 @@ export const guideEmbed = (
           inline: true,
         },
         {
-          name: "Release Notes",
+          name: "Notes",
           value: notes,
           inline: true,
         },

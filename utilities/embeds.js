@@ -33,7 +33,7 @@ export const guideEmbed = (
           inline: true,
         },
         {
-          name: "Region",
+          name: "Country",
           value: country,
           inline: true,
         },

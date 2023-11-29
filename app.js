@@ -39,23 +39,9 @@ class Discord {
     return [skus, countries];
   }
 
-  checkUserId(id) {
-    const idSet = new Set([
-      "276649462166978560",
-      "430516215719657472",
-      "414181363135021057",
-      "534784678364708866",
-      "570580983192223765",
-      "413911980600983554",
-    ]);
-
-    return idSet.has(id);
-  }
-
   handleMessage() {
     this.discord.on(Events.MessageCreate, async (m) => {
       if (!m.content.startsWith("!guide")) return;
-      if (!this.checkUserId(m.author.id)) return;
 
       const [skus, countries] = this.getParams(m.content.slice(6).trimStart());
       await this.guide.handleMessage(m, skus, countries);

@@ -108,6 +108,8 @@ export class Guide extends GuideData {
       if (this.errorMessages.length) throw Error(this.errorMessages.join("\n"));
     } catch (e) {
       throw Error(e.message);
+    } finally {
+      this.errorMessages = [];
     }
   }
 

@@ -1,21 +1,4 @@
-import { getLanguage } from "../utilities/helpers.js";
-import { getNikeGuideData } from "./nikeAPI.js";
-
 export class GuideData {
-  async getProductData(sku, country) {
-    try {
-      const language = getLanguage(country);
-      if (!language) throw Error(`Country **${country}** is not supported`);
-
-      const data = await getNikeGuideData(sku, country, language);
-      if (!data) throw Error(`Product **${sku}** not found in **${country}**`);
-
-      return data;
-    } catch (e) {
-      throw Error(e.message);
-    }
-  }
-
   getURL(channel, sku, country, slug) {
     const countryPath = country !== "US" ? `/${country.toLowerCase()}` : "";
 
@@ -68,46 +51,42 @@ export class GuideData {
     )}`;
   }
 
-  async getGuideData(sku, country) {
-    try {
-      const guideData = [];
-      const productData = await this.getProductData(sku, country);
+  getGuideData(productInfos) {
+    const guideData = [];
 
-      for (const productInfo of productData.productInfo) {
-        const name = productInfo.productContent.fullTitle;
-        const url = this.getURL(
-          productData.channelName,
-          sku,
-          country,
-          productInfo.productContent.slug
-        );
-        const releaseDateAndTime =
-          Date.parse(
-            productInfo.launchView?.startEntryDate ??
-              productInfo.merchProduct.commerceStartDate
-          ) / 1000;
-        const channel = this.getChannel(productData.channelName);
-        const method = this.getMethod(productInfo);
-        const price = this.getPrice(productInfo.merchPrice);
-        const productSKU = productInfo.merchProduct.styleColor;
-        const image = this.getImage(productSKU);
+    for (const productInfo of productInfos) {
+      const name = productInfo.productContent.fullTitle;
+      const url = this.getURL(
+        productInfo.channel,
+        productInfo.merchProduct.styleColor,
+        productInfo.country,
+        productInfo.productContent.slug
+      );
+      const releaseDateAndTime =
+        Date.parse(
+          productInfo.launchView?.startEntryDate ??
+            productInfo.merchProduct.commerceStartDate
+        ) / 1000;
+      const channel = this.getChannel(productInfo.channel);
+      const method = this.getMethod(productInfo);
+      const price = this.getPrice(productInfo.merchPrice);
+      const productSKU = productInfo.merchProduct.styleColor;
+      const country = productInfo.country;
+      const image = this.getImage(productSKU);
 
-        guideData.push([
-          name,
-          url,
-          releaseDateAndTime,
-          channel,
-          method,
-          price,
-          productSKU,
-          country,
-          image,
-        ]);
-      }
-
-      return guideData;
-    } catch (e) {
-      throw Error(e.message);
+      guideData.push([
+        name,
+        url,
+        releaseDateAndTime,
+        channel,
+        method,
+        price,
+        productSKU,
+        country,
+        image,
+      ]);
     }
+
+    return guideData;
   }
 }

@@ -1,4 +1,4 @@
-export const getNikeGuideData = async (sku, country, language) => {
+export const getNikeData = async (sku, country, language) => {
   const channels = ["SNKRS Web", "Nike.com", "SNKRS"];
 
   for (const channel of channels) {

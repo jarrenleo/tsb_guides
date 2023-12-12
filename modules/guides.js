@@ -76,7 +76,7 @@ export class Guide extends GuideData {
   async createAndSendEmbed(guideData) {
     try {
       for (const data of guideData) {
-        switch (data.country) {
+        switch (data[7]) {
           case "US":
             this.US_WEBHOOK.send({
               embeds: guideEmbed(data, process.env.US_NOTES),

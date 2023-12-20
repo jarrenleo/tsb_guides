@@ -18,6 +18,9 @@ export class Guide extends GuideData {
   JP_WEBHOOK = new WebhookClient({
     url: process.env.JP_WEBHOOK,
   });
+  KR_WEBHOOK = new WebhookClient({
+    url: process.env.KR_WEBHOOK,
+  });
   GS_WEBHOOK = new WebhookClient({
     url: process.env.GS_WEBHOOK,
   });
@@ -92,6 +95,10 @@ export class Guide extends GuideData {
               embeds: guideEmbed(data, process.env.JP_NOTES),
             });
             break;
+          case "KR":
+            this.KR_WEBHOOK.send({
+              embeds: guideEmbed(data, "-"),
+            });
           default:
             this.GS_WEBHOOK.send({
               embeds: guideEmbed(data, process.env.GS_NOTES),

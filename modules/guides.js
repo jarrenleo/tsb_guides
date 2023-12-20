@@ -99,6 +99,7 @@ export class Guide extends GuideData {
             this.KR_WEBHOOK.send({
               embeds: guideEmbed(data, "-"),
             });
+            break;
           default:
             this.GS_WEBHOOK.send({
               embeds: guideEmbed(data, process.env.GS_NOTES),

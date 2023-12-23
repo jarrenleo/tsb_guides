@@ -41,7 +41,7 @@ class Discord {
 
   handleMessage() {
     this.discord.on(Events.MessageCreate, async (m) => {
-      if (!m.content.startsWith("!guide")) return;
+      if (!m.content.includes("!guide")) return;
 
       const [skus, countries] = this.getParams(m.content.slice(6).trimStart());
       await this.guide.handleMessage(m, skus, countries);

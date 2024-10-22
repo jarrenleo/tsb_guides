@@ -10,8 +10,8 @@
   "author": "jaleo",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^14.13.0",
-    "dotenv": "^16.3.1",
+    "discord.js": "^14.16.3",
+    "dotenv": "^16.4.5",
     "lodash.uniqby": "^4.7.0"
   }
 }

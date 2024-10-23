@@ -121,7 +121,7 @@ export class Guide extends GuideData {
     }
   }
 
-  sendError(m, message) {
+  sendMessage(m, message) {
     m.reply({
       content: message,
     });
@@ -139,8 +139,9 @@ export class Guide extends GuideData {
       const guideData = this.getGuideData(uniqueProductInfo);
       this.createAndSendEmbed(guideData);
       this.checkErrorMessages();
+      this.sendMessage(m, "Guides sent successfully!");
     } catch (e) {
-      this.sendError(m, e.message);
+      this.sendMessage(m, e.message);
     }
   }
 }

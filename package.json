@@ -11,8 +11,8 @@
   "author": "jaleo",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^14.16.3",
-    "dotenv": "^16.4.5",
+    "discord.js": "^14.19.3",
+    "dotenv": "^16.5.0",
     "lodash.uniqby": "^4.7.0"
   }
 }

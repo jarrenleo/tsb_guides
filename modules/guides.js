@@ -65,6 +65,7 @@ export class Guide extends GuideData {
               channel: data.channelName,
               country,
               ...productInfo,
+              imageNodes: data.publishedContent.nodes,
             });
           }
         }

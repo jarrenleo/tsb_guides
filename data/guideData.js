@@ -48,6 +48,15 @@ export class GuideData {
     return `${price.currency} ${price.fullPrice.toLocaleString("en-US")}`;
   }
 
+  getImage(nodes, sku) {
+    const imageNode = nodes.find((node) =>
+      node.properties.internalName?.includes(sku)
+    );
+    if (!imageNode) return nodes[0].nodes[0].properties.squarishURL;
+
+    return imageNode.properties.squarishURL;
+  }
+
   getGuideData(productInfos) {
     const guideData = [];
 
@@ -69,6 +78,7 @@ export class GuideData {
       const price = this.getPrice(productInfo.merchPrice);
       const productSKU = productInfo.merchProduct.styleColor;
       const country = productInfo.country;
+      const image = this.getImage(productInfo.imageNodes, productSKU);
 
       guideData.push([
         name,
@@ -79,6 +89,7 @@ export class GuideData {
         price,
         productSKU,
         country,
+        image,
       ]);
     }
 

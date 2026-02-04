@@ -3,7 +3,9 @@ export class GuideData {
     const countryPath = country !== "US" ? `/${country.toLowerCase()}` : "";
 
     switch (channel) {
-      case "SNKRS Web" || "SNKRS":
+      case "UNKNOWN":
+      case "SNKRS Web":
+      case "SNKRS":
         return `https://www.nike.com${countryPath}/launch/t/${slug}`;
       case "Nike.com":
         return `https://www.nike.com${countryPath}/t/${slug}/${sku}`;
@@ -12,7 +14,9 @@ export class GuideData {
 
   getChannel(channel) {
     switch (channel) {
-      case "SNKRS Web" || "SNKRS":
+      case "UNKNOWN":
+      case "SNKRS Web":
+      case "SNKRS":
         return "SNKRS";
       case "Nike.com":
         return "NIKE";
@@ -44,13 +48,6 @@ export class GuideData {
     return `${price.currency} ${price.fullPrice.toLocaleString("en-US")}`;
   }
 
-  getImage(sku) {
-    return `https://secure-images.nike.com/is/image/DotCom/${sku.replace(
-      "-",
-      "_"
-    )}`;
-  }
-
   getGuideData(productInfos) {
     const guideData = [];
 
@@ -72,7 +69,6 @@ export class GuideData {
       const price = this.getPrice(productInfo.merchPrice);
       const productSKU = productInfo.merchProduct.styleColor;
       const country = productInfo.country;
-      const image = this.getImage(productSKU);
 
       guideData.push([
         name,
@@ -83,7 +79,6 @@ export class GuideData {
         price,
         productSKU,
         country,
-        image,
       ]);
     }
 

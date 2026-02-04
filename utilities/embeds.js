@@ -1,5 +1,5 @@
 export const guideEmbed = (
-  [name, url, releaseDateAndTime, channel, method, price, sku, country, image],
+  [name, url, releaseDateAndTime, channel, method, price, sku, country],
   notes
 ) => {
   return [
@@ -47,9 +47,6 @@ export const guideEmbed = (
         text: "The Shit Bot",
         icon_url:
           "https://cdn.discordapp.com/attachments/891506947457712188/895677549831659560/TSB_Icon.png",
-      },
-      thumbnail: {
-        url: image,
       },
     },
   ];
